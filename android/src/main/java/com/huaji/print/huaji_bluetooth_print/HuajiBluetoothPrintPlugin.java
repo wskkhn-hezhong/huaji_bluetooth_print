@@ -1,4 +1,5 @@
 package com.huaji.print.huaji_bluetooth_print;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.Application;

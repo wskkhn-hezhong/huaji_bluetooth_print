@@ -1,4 +1,4 @@
-package com.example.bluetooth_print;
+package com.huaji.print.huaji_bluetooth_print;
 
 public enum PrinterCommand {
     /**

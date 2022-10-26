@@ -1,4 +1,4 @@
-package com.example.bluetooth_print;
+package com.huaji.print.huaji_bluetooth_print;
 
 import java.util.concurrent.ThreadFactory;
 
