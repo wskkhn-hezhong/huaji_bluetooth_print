@@ -25,7 +25,10 @@ typedef enum : NSUInteger{
 @property(nonatomic,strong)BLEConnecter *bleConnecter;
 @property(nonatomic,strong)Connecter *connecter;
 
+
 +(instancetype)sharedInstance;
+
+-(BOOL) isConnected;
 
 /**
  *  方法说明：关闭连接

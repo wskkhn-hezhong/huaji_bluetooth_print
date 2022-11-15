@@ -3,7 +3,7 @@
 #import "EscCommand.h"
 #import "TscCommand.h"
 
-@implementation HuajiBluetoothPrintPlugin
+@interface HuajiBluetoothPrintPlugin ()
 @property(nonatomic, retain) NSObject<FlutterPluginRegistrar> *registrar;
 @property(nonatomic, retain) FlutterMethodChannel *channel;
 @property(nonatomic, retain) BluetoothPrintStreamHandler *stateStreamHandler;
@@ -38,8 +38,7 @@
     
     result(@(YES));
   } else if([@"isConnected" isEqualToString:call.method]) {
-    
-    result(@(NO));
+    result(@([Manager isConnected]));
   } else if([@"isOn" isEqualToString:call.method]) {
     result(@(YES));
   }else if([@"startScan" isEqualToString:call.method]) {
@@ -163,9 +162,9 @@
         NSNumber *codeHeight = ![m objectForKey:@"codeHeight"]?@40 : [m objectForKey:@"codeHeight"];
         
         if([@"text" isEqualToString:type]){
-            [command addTextwithX:[x intValue] withY:[y intValue] withFont:@"TSS24.BF2" withRotation:0 withXscal:fontWidth withYscal:fontHeight withText:content];
+            [command addTextwithX:[x intValue] withY:[y intValue] withFont:@"TSS24.BF2" withRotation:0 withXscal:[fontWidth intValue] withYscal:[fontHeight intValue] withText:content];
         }else if([@"barcode" isEqualToString:type]){
-            [command add1DBarcode:[x intValue] :[y intValue] :@"CODE128" :codeHeight :1 :0 :2 :2 :content];
+            [command add1DBarcode:[x intValue] :[y intValue] :@"CODE128" :[codeHeight intValue] :1 :0 :2 :2 :content];
         }else if([@"qrcode" isEqualToString:type]){
             [command addQRCode:[x intValue] :[y intValue] :@"L" :5 :@"A" :0 :content];
         }else if([@"image" isEqualToString:type]){

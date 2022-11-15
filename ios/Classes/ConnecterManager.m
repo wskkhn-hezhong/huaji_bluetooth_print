@@ -63,6 +63,17 @@ static dispatch_once_t once;
     [_bleConnecter stopScan];
 }
 
+-(BOOL) isConnected{
+    if(_bleConnecter.connPeripheral == nil){
+        return NO;
+    }
+     if (_bleConnecter.connPeripheral.state != CBPeripheralStateConnected && _bleConnecter.connPeripheral.state != CBPeripheralStateConnecting) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 /**
  *  连接
  */
